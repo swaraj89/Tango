@@ -1,0 +1,134 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="logo-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 logo-holder">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Tango logo" title="Tango logo" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Example row of columns -->
+        <section class="form-area">
+            <div class="row text-header login-text">
+                <h3 class="header">State thy name and ye shall pass</h3>
+                <p class="subheader">Not a member yet? <a href="#" id="register" class="form-anchor">Register</a> Now &mdash; it's fun and easy!</p>
+            </div>
+            <div class="row text-header register-text">
+                <h3 class="header">Join Tango today</h3>
+                <p class="subheader">It's free and always will be.</p>
+            </div>
+            <div class="row form-area">
+                <div class="col-md-7">
+                    <div class="login-form">
+                        <form action="login.do" id="loginForm">
+                            <div class="row">
+                                <input type="text" placeholder="Username" id="username" class="form-elem col-md-6" />
+                                <span class="err-msg col-md-6">*Required field</span>
+                            </div>
+                            <div class="pwd-field row">
+                                <input type="text" placeholder="Password" id="password" class="form-elem col-md-6"></input>
+                                <a href="#" id="frgt-pwd" class="form-anchor">Forgot password?</a>
+                                <span class="err-msg col-md-6">*Required field</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-submit-holder">
+                                    <input id="rememberme" name="rememberme" value="remember" type="checkbox" /> &nbsp;Remember me</label>
+                                    <input type="submit" class="submit-btn disabled" id="login" value="Login" disabled/>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="register.do" id="registerForm">
+                            <div class="row">
+                                <input type="text" placeholder="Email" id="email" class="form-elem col-md-6" />
+                                <span class="err-msg col-md-6">*Required field</span>
+                            </div>
+                            <div class="row">
+                                <input type="text" placeholder="Username" id="username" class="form-elem col-md-6" />
+                                <span class="err-msg col-md-6">*Required field</span>
+                            </div>
+                            <div class="row">
+                                <input type="text" placeholder="Password" id="password" class="form-elem col-md-6"></input>
+                                <span class="err-msg col-md-6">*Required field</span>
+                            </div>
+                            <div class="row">
+                                <input type="text" placeholder="Confirm Password" id="cnfPassword" class="form-elem col-md-6"></input>
+                                <span class="err-msg col-md-6">*Required field</span>
+                            </div>
+                            <div class="row">
+                                <select class="form-control col-md-6 form-elem" name="gender">
+                                    <option value="-999">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <span class="err-msg col-md-6">*Required field</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-submit-holder">
+                                    <p>By clicking Register, you agree our <a href="#" class="form-anchor">Terms</a> and that you have read our <a href="#" class="form-anchor">Data usage Policy,</a> including our <a href="#" class="form-anchor">Cookie Use.</a></p>
+                                    <input type="submit" class="submit-btn disabled" id="register" value="Register" disabled/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-5 social-login">
+                    <a href="#" class="social facebook">Login With Facebook</a>
+                    <a href="#" class="social twitter">Login With Twitter</a>
+                </div>
+            </div>
+        </section>
+        <section class="video-area">
+            <div class="row text-header">
+                <h3 class="header">Learn More!</h3>
+                <p class="subheader">Check out our demos and quick guides to our app.</p>
+            </div>
+            <div class="row video-area">
+                <div class="vid-image col-md-12">
+                    <img src="img/vidimage.jpg" alt="Video" class="img-responsive">
+                    <div id="play-btn" data-url=""></div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; Company 2015</p>
+        </footer>
+    </div>
+    <!-- /container -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+    </script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/Tango.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

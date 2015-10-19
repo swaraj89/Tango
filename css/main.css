@@ -1,0 +1,196 @@
+/* ==========================================================================
+   Swaraj's custom styles
+   ========================================================================== */
+body {
+    background: #e2e2e2;
+}
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.logo-area {}
+
+.container {
+    width: 960px;
+}
+.logo-holder{
+	margin-bottom: 10px;
+}
+section.form-area,
+section.video-area{
+    background: #fff;
+    box-shadow: 1px 2px 3px #aaa;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+div.text-header {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+div.form-area{
+	margin:10px 0;
+}
+h3.header {
+    font-size: 18px;
+}
+
+p.subheader {
+    font-size: 12px;
+}
+
+div.login-form {
+    margin: 10px 15px;
+}
+div.social-login{
+    border-left: 1px solid #ccc;
+    padding: 0px 30px;
+}
+.form-anchor {
+    color: #0077c3;
+    text-decoration: none;
+}
+
+.form-elem {
+    margin: 10px 0;
+    padding: 0 5px;
+    height: 30px;
+}
+
+#password:focus + #frgt-pwd {
+    display: inline-block;
+}
+
+.pwd-field {
+    position: relative;
+}
+
+#frgt-pwd {
+    display: none;
+    position: absolute;
+    top: 16px;
+    left: 11.5em;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.submit-btn{
+    float: right;
+    background: #077cc3;
+    border:0 none;
+    border-radius: 20px;
+    padding: 3px 15px;
+    cursor: pointer;
+    color:#fff;
+    text-shadow:1px 1px 1px #aaa;
+}
+.submit-btn.disabled{
+	background: #d0d0d0;
+	cursor: a;
+}
+a.social {
+    border: 1px solid #777;
+    border-color: rgba(0,0,0,0.2);
+    border-bottom-color: #333;
+    border-bottom-color: rgba(0,0,0,0.4);
+    margin:20px 0;
+    color: #fff;
+    -moz-box-shadow: inset 0 0.08em 0 rgba(255,255,255,0.4), inset 0 0 0.1em rgba(255,255,255,0.9);
+    -webkit-box-shadow: inset 0 0.08em 0 rgba(255,255,255,0.4), inset 0 0 0.1em rgba(255,255,255,0.9);
+    box-shadow: inset 0 0.08em 0 rgba(255,255,255,0.4), inset 0 0 0.1em rgba(255,255,255,0.9);
+    cursor: pointer;
+    display: inline-block;
+    font: bold 100%/2.1 "Lucida Grande", Tahoma, sans-serif;
+    padding: 0 .95em 0 0;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+    white-space: nowrap;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    font-size: 13px;
+    width:200px;
+    
+}
+a.social:before {
+    content: "";
+    border-right: 0.075em solid rgba(0,0,0,0.1);
+    /*float: left;*/
+    font: 120%/1.65 zocial;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 0.5em 0 0;
+    padding: 0 0.5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    -moz-box-shadow: 0.075em 0 0 rgba(255,255,255,0.25);
+    -webkit-box-shadow: 0.075em 0 0 rgba(255,255,255,0.25);
+    box-shadow: 0.075em 0 0 rgba(255,255,255,0.25);
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    background: url(../img/social.png) no-repeat;
+}
+a.social.facebook {
+    background-color: #618ac6;
+}
+a.social.facebook:before {
+    background-position: 0 0px;
+}
+a.social.twitter {
+    background-color: #72bef8;
+}
+a.social.twitter:before {
+    background-position:0 11px;;
+}
+span.err-msg{
+	display: none;
+	margin: 15px 0;
+	color:#AC264C;
+}
+input[type="text"].error{
+	border:1px solid #AC264C;
+}
+div.form-submit-holder{
+	padding:0px;
+}
+select.form-control{
+	display: block;
+    width: 50%;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    /* border-radius: 4px; */
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+div.vid-image{
+	position: relative;
+}
+div#play-btn{
+	background: url(../img/play.png) no-repeat;
+	height:140px;
+	width:140px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin-top: -70px;
+	margin-left: -70px;
+	cursor:pointer;
+}
+div.video-area{
+	padding:10px;
+}
+.register-text,#registerForm{
+	display:none;
+}
