@@ -9,5 +9,7 @@ $(document).ready(function(){
 	$("#play-btn").click(Tango.loadLightBox);
 
 	$("#registerForm input[type='text'],#registerForm input[type='password']").on("blur",Tango.registerFormValidate);
-	// $("#login-btn").on("click",Tango.authenticateUser);
+	$("#register-btn").on("click",Tango.createUser);
+
+	$("#open-login").on("click",Tango.openLogin);
 });

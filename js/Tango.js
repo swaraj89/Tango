@@ -206,18 +206,24 @@ var Tango = {
         var $cnPwd = $("#registerForm #cnfPassword");
         var $gender = $("#registerForm #gender");
 
-        console.log(emailRegex.test($email));
         // email validation
         if ($email.val() === "") {
             $email.addClass("error");
             isValid = false;
-        } else if ($email.val().length > 0 && !emailRegex.test($email)) {
+        } else if ($email.val().length > 0 && !emailRegex.test($email.val())) {
             $email.addClass("error");
             $email.next(".err-msg").text("Not a valid email");
+            if ($email.next().hasClass('suc-msg')) {
+                $email.next(".suc-msg").removeClass("suc-msg").addClass("err-msg").text("Not a valid email");
+            }
             isValid = false;
         } else if (Tango.doesEmailExist($email.val())) {
             $email.addClass("error");
             $email.next(".err-msg").html("Email already registered, <a href='#' id='open-login'>Login</a>");
+            $("#open-login").on("click", Tango.openLogin);
+            if ($email.next().hasClass('suc-msg')) {
+                $email.next(".suc-msg").removeClass("suc-msg").addClass("err-msg").html("Email already registered, <a href='#' id='open-login'>Login</a>");
+            }
             isValid = false;
         } else {
             $email.removeClass("error").addClass("success");
@@ -229,6 +235,10 @@ var Tango = {
         if ($uname.val() === '') {
             $uname.addClass('error');
             isValid = false;
+        } else {
+            $uname.removeClass("error").addClass("success");
+            $uname.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
+            isValid = true;
         }
 
         //password validation
@@ -238,7 +248,6 @@ var Tango = {
         } else if ($pwd.val() != "" && $cnPwd.val() == "") {
             $cnPwd.addClass('error');
             $pwd.addClass('success').removeClass('error');
-            // $pwd.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
             isValid = false;
         } else if ($pwd.val() !== $cnPwd.val()) {
             $cnPwd.addClass('error');
@@ -261,40 +270,65 @@ var Tango = {
             $gender.addClass('error');
             isValid = false;
         }
-        $gender.on('change', function() {
+        $gender.on('change', function(e) {
             if ($gender.val() === '-999') {
                 $gender.addClass('error');
                 $gender.next(".suc-msg").removeClass("suc-msg").addClass("err-msg").text("* Required field");
                 isValid = false;
             } else {
                 $gender.addClass('success').removeClass('error');
-
                 $gender.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
                 isValid = true;
             }
+
+            if (isValid) {
+                $("#register-btn").removeAttr('disabled');
+            } else {
+                $("#register-btn").prop('disabled', true);
+            }
         });
-
-        // if($gender.val() === '-999' || hasGenderChanged){
-        //     $gender.addClass('error');
-        //     isValid = false;
-        // }else{
-        //     $gender.addClass('success').removeClass('error');
-
-        //     $gender.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
-        //     isValid = true;
-        // }
-
-        //Gender drop-down validation
-
-
+        // $(".error").length == 5 || isValid
         if (isValid) {
             $("#register-btn").removeAttr('disabled');
         } else {
             $("#register-btn").prop('disabled', true);
         }
     },
-    doesEmailExist: function() {
-        return true;
-    }
+    /*
+     * @method : doesEmailExist
+     * @description : check if email id is already registered
+     * @return : emailExists (Boolean)
+     */
+    doesEmailExist: function(userEmail) {
+        //Fetch data from ajax. Right now initialised;     
+        var registeredUsers = ['abc@tango.com', 'joe@tango.com', 'admin@tango.com'];
+        var emailExists = registeredUsers.indexOf(userEmail) != -1 ? true : false;
 
+        return emailExists;
+    },
+    /*
+     * @method : openLogin
+     * @description : opens login form
+     */
+    openLogin: function() {
+        $("#loginForm,.login-text").show("slow");
+        $("#registerForm,.register-text").hide("slow");
+
+        $("#username").val($("#registerForm #email").val());
+        $("#password").focus();
+    },
+    createUser: function(e) {
+        //stopping form to submit to view user details
+        e.preventDefault();
+        var newUser = {
+                email: $("#registerForm #email").val(),
+                uname: $("#registerForm #username").val(),
+                pwd: $("#registerForm #password").val(),
+                gender: $("#registerForm #gender").val()
+            }
+            //make ajax call to fetch user authentication
+        console.log("user is created ", newUser);
+
+
+    }
 };
