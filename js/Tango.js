@@ -19,6 +19,7 @@ var Tango = {
     openVideo: function() {
         //grab url to show
         //Load lightbox with the URL
+        console.log("play button clicked");
     },
     /*
      * @method : _loadLightBox
