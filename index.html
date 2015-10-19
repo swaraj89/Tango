@@ -54,18 +54,19 @@
                                 <span class="err-msg col-md-6">*Required field</span>
                             </div>
                             <div class="pwd-field row">
-                                <input type="text" placeholder="Password" id="password" class="form-elem col-md-6"/>
+                                <input type="password" placeholder="Password" id="password" class="form-elem col-md-6" />
                                 <span class="err-msg col-md-6">*Required field</span>
                                 <a href="#" id="frgt-pwd" class="form-anchor">Forgot password?</a>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-submit-holder">
-                                    <input id="rememberme" name="rememberme" value="remember" type="checkbox" /><label>&nbsp;Remember me</label>
+                                    <input id="rememberme" name="rememberme" value="remember" type="checkbox" />
+                                    <label>&nbsp;Remember me</label>
                                     <input type="submit" class="submit-btn" id="login-btn" value="Login" disabled/>
                                 </div>
                             </div>
                         </form>
-                        <form action="register.do" id="registerForm">
+                        <form action="" id="registerForm">
                             <div class="row">
                                 <input type="text" placeholder="Email" id="email" class="form-elem col-md-6" />
                                 <span class="err-msg col-md-6">*Required field</span>
@@ -75,15 +76,15 @@
                                 <span class="err-msg col-md-6">*Required field</span>
                             </div>
                             <div class="row">
-                                <input type="text" placeholder="Password" id="password" class="form-elem col-md-6"/>
+                                <input type="password" placeholder="Password" id="password" class="form-elem col-md-6" />
                                 <span class="err-msg col-md-6">*Required field</span>
                             </div>
                             <div class="row">
-                                <input type="text" placeholder="Confirm Password" id="cnfPassword" class="form-elem col-md-6"></input>
+                                <input type="password" placeholder="Confirm Password" id="cnfPassword" class="form-elem col-md-6"></input>
                                 <span class="err-msg col-md-6">*Required field</span>
                             </div>
                             <div class="row">
-                                <select class="form-control col-md-6 form-elem" name="gender">
+                                <select class="form-control col-md-6 form-elem" name="gender" id="gender">
                                     <option value="-999">Select Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -93,7 +94,7 @@
                             <div class="row">
                                 <div class="col-md-6 form-submit-holder">
                                     <p>By clicking Register, you agree our <a href="#" class="form-anchor">Terms</a> and that you have read our <a href="#" class="form-anchor">Data usage Policy,</a> including our <a href="#" class="form-anchor">Cookie Use.</a></p>
-                                    <input type="submit" class="submit-btn disabled" id="register" value="Register" disabled/>
+                                    <input type="submit" class="submit-btn disabled" id="register-btn" value="Register" disabled/>
                                 </div>
                             </div>
                         </form>
@@ -124,9 +125,9 @@
         </footer>
     </div>
     <!-- /container -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
-    window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+    window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')
     </script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/Tango.js"></script>

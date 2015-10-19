@@ -19,12 +19,11 @@ var Tango = {
     loadLightBox: function(e) {
         var self = Tango;
         var closeText = "Close [X]"
-        //write logic to load the lightbox
+            //write logic to load the lightbox
 
         //prevent default action (hyperlink)
         e.preventDefault();
 
-        console.log(e);
         //Get clicked link href
         var image_href = $(e.currentTarget).data("imgpath");
 
@@ -48,7 +47,7 @@ var Tango = {
             //create HTML markup for lightbox window
             var lightbox =
                 '<div id="lightbox">' +
-                '<p>'+closeText+'</p>' +
+                '<p>' + closeText + '</p>' +
                 '<div id="content">' + //insert clicked link's href into img src
                 '<img src="' + image_href + '" />' +
                 '</div>' +
@@ -63,14 +62,13 @@ var Tango = {
             self._closeLightBox();
         });
         //press escape to quit
-        $(document).on('keyup',function(e){
-            console.log(e.keyCode);
-            if(e.keyCode === 27){
+        $(document).on('keyup', function(e) {
+            if (e.keyCode === 27) {
                 self._closeLightBox();
             }
         });
         //allow user to click on content.Provision for video.
-        $('#content').on('click',function(e){
+        $('#content').on('click', function(e) {
             e.stopPropagation();
         });
     },
@@ -88,6 +86,24 @@ var Tango = {
      */
     _validateLogin: function() {
         var isValidate = true;
+
+        var user = {
+            uname: $("#username").val(),
+            pwd: $("#password").val()
+        };
+
+        return {
+            user: user,
+            isValidate: isValidate
+        };
+    },
+    /*
+     * @method : validateRegister
+     * @description : validate the register form
+     * @return : isValidate (Boolean)
+     */
+    validateRegister: function() {
+        var isValidate = true;
         return isValidate;
     },
     /*
@@ -95,30 +111,11 @@ var Tango = {
      * @description : validate the login form
      * @return : isValidate (Boolean)
      */
-    validateRegister: function() {
-        var isValidate = true;
-
-        var user = {
-            uname : $().val(),
-            pwd : $().val()
-        };
-
-        return {
-            user : user,
-            isValidate : isValidate
-        };
-    },
-    /*
-     * @method : validateLogin
-     * @description : validate the login form
-     * @return : isValidate (Boolean)
-     */
     authenticateUser: function() {
-        var valid = self._validateLogin();
-
-        if(valid.isValidate){
+        var valid = Tango._validateLogin();
+        if (valid.isValidate) {
             //make ajax call to fetch user authentication
-            console.log("user is valid "+valid.user);
+            console.log("user is valid ", valid.user);
         }
 
     },
@@ -162,6 +159,7 @@ var Tango = {
      * @description : validate the register form
      * @return : isValidate (Boolean)
      */
+
     loginUiSetup: function() {
         var self = Tango;
         var usrName = $("#username").val();
@@ -169,16 +167,16 @@ var Tango = {
         var isUsrNameBlank = true;
         var isPwdBlank = true;
 
-        if(usrName === ""){
+        if (usrName === "") {
             $("#username").addClass("error")
-        }else{
+        } else {
             isUsrNameBlank = false;
             $("#username").removeClass("error")
         }
 
-        if(pwd === ""){
+        if (pwd === "") {
             $("#password").addClass("error")
-        }else{
+        } else {
             isPwdBlank = false;
             $("#password").removeClass("error")
         }
@@ -186,11 +184,117 @@ var Tango = {
         //if any field is blank
         var isFieldBlank = (isPwdBlank || isUsrNameBlank);
         //if all fields are filled
-        if(!isFieldBlank){
+        if (!isFieldBlank) {
             $("#login-btn").removeAttr('disabled');
-        }else{
-            $("#login-btn").prop('disabled',true);
+        } else {
+            $("#login-btn").prop('disabled', true);
+        }
+
+    },
+    /*
+     * @method : registerFormValidate
+     * @description : validate the register form
+     * @return : isValidate (Boolean)
+     */
+    registerFormValidate: function() {
+        var emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        var isValid = false;
+
+        var $email = $("#registerForm #email");
+        var $uname = $("#registerForm #username");
+        var $pwd = $("#registerForm #password");
+        var $cnPwd = $("#registerForm #cnfPassword");
+        var $gender = $("#registerForm #gender");
+
+        console.log(emailRegex.test($email));
+        // email validation
+        if ($email.val() === "") {
+            $email.addClass("error");
+            isValid = false;
+        } else if ($email.val().length > 0 && !emailRegex.test($email)) {
+            $email.addClass("error");
+            $email.next(".err-msg").text("Not a valid email");
+            isValid = false;
+        } else if (Tango.doesEmailExist($email.val())) {
+            $email.addClass("error");
+            $email.next(".err-msg").html("Email already registered, <a href='#' id='open-login'>Login</a>");
+            isValid = false;
+        } else {
+            $email.removeClass("error").addClass("success");
+            $email.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
+            isValid = true;
+        }
+
+        //user name validation
+        if ($uname.val() === '') {
+            $uname.addClass('error');
+            isValid = false;
+        }
+
+        //password validation
+        if ($pwd.val() === '') {
+            $pwd.addClass('error');
+            isValid = false;
+        } else if ($pwd.val() != "" && $cnPwd.val() == "") {
+            $cnPwd.addClass('error');
+            $pwd.addClass('success').removeClass('error');
+            // $pwd.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
+            isValid = false;
+        } else if ($pwd.val() !== $cnPwd.val()) {
+            $cnPwd.addClass('error');
+            $cnPwd.next(".err-msg").text("Passwords donot match");
+            if ($cnPwd.next().hasClass('suc-msg')) {
+                $cnPwd.next(".suc-msg").removeClass("suc-msg").addClass("err-msg").text("Passwords do not match");
+            }
+            isValid = false;
+        } else {
+            $pwd.addClass('success').removeClass('error');
+            $cnPwd.addClass('success').removeClass('error');
+
+            $pwd.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
+            $cnPwd.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Password match");
+
+            isValid = true;
+        }
+
+        if ($gender.val() === '-999') {
+            $gender.addClass('error');
+            isValid = false;
+        }
+        $gender.on('change', function() {
+            if ($gender.val() === '-999') {
+                $gender.addClass('error');
+                $gender.next(".suc-msg").removeClass("suc-msg").addClass("err-msg").text("* Required field");
+                isValid = false;
+            } else {
+                $gender.addClass('success').removeClass('error');
+
+                $gender.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
+                isValid = true;
+            }
+        });
+
+        // if($gender.val() === '-999' || hasGenderChanged){
+        //     $gender.addClass('error');
+        //     isValid = false;
+        // }else{
+        //     $gender.addClass('success').removeClass('error');
+
+        //     $gender.next(".err-msg").removeClass("err-msg").addClass("suc-msg").text("Looks great");
+        //     isValid = true;
+        // }
+
+        //Gender drop-down validation
+
+
+        if (isValid) {
+            $("#register-btn").removeAttr('disabled');
+        } else {
+            $("#register-btn").prop('disabled', true);
         }
     },
+    doesEmailExist: function() {
+        return true;
+    }
 
 };
