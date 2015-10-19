@@ -8,6 +8,9 @@ body {
     margin-right: 0px;
     margin-left: 0px;
 }
+a,a:hover{
+    text-decoration: none;
+}
 .logo-area {}
 
 .container {
@@ -57,7 +60,7 @@ div.social-login{
     height: 30px;
 }
 
-#password:focus + #frgt-pwd {
+#password:focus + span.err-msg +#frgt-pwd {
     display: inline-block;
 }
 
@@ -84,7 +87,7 @@ div.social-login{
     color:#fff;
     text-shadow:1px 1px 1px #aaa;
 }
-.submit-btn.disabled{
+input.submit-btn[disabled]{
 	background: #d0d0d0;
 	cursor: a;
 }
@@ -158,6 +161,9 @@ span.err-msg{
 input[type="text"].error{
 	border:1px solid #AC264C;
 }
+input[type="text"].error + span.err-msg{
+    display: inline-block;
+}
 div.form-submit-holder{
 	padding:0px;
 }
@@ -177,7 +183,7 @@ select.form-control{
 div.vid-image{
 	position: relative;
 }
-div#play-btn{
+a#play-btn{
 	background: url(../img/play.png) no-repeat;
 	height:140px;
 	width:140px;
@@ -194,3 +200,31 @@ div.video-area{
 .register-text,#registerForm{
 	display:none;
 }
+/*Lightbox css starts*/
+#lightbox {
+    position:fixed; /* keeps the lightbox window in the current viewport */
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background:url(../img/overlay.png); /*using png so that it's compatible with older browsers*/
+    text-align:center;
+}
+#lightbox p {
+    color: #fff;
+    text-align:right; 
+    margin:5px 10px; 
+    font-size:16px; 
+    cursor: pointer;
+}
+#lightbox #content {
+    display: inline-block;
+    position: relative;
+    top: 10%;
+    background: #fff;
+    padding: 7px;
+}
+#lightbox img {
+    max-width:940px;
+}
+/*Lightbox css ends*/
